@@ -13,13 +13,7 @@ public class ARModelPartController : MonoBehaviour
 
     void Start()
     {
-        int count = transform.childCount;
-        parts = new GameObject[count];
-
-        for (int i = 0; i < count; i++)
-        {
-            parts[i] = transform.GetChild(i).gameObject;
-        }
+       
     }
 
     public void ShowOnly(int index)
@@ -29,6 +23,10 @@ public class ARModelPartController : MonoBehaviour
         for (int i = 0; i < parts.Length; i++)
         {
             parts[i].SetActive(i == index);
+        }
+        if (index == 4)
+        {
+            parts[1].SetActive(true);
         }
     }
 

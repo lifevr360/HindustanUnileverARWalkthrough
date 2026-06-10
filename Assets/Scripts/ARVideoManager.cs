@@ -9,45 +9,77 @@ public class ARVideoManager : MonoBehaviour
     [Header("Video List")]
     public List<VideoClip> videoClips = new List<VideoClip>();
 
-    private VideoPlayer currentVideoPlayer;
+    private Dictionary<int, VideoPlayer> videoPlayerMap = new Dictionary<int, VideoPlayer>();
 
-    private int pendingVideoIndex = -1;
+    // NEW -------------------------
+    private int currentActivePlayerID = -1;
+    // -----------------------------
 
     void Awake()
     {
         Instance = this;
-    }
 
-    // Called by AR object when spawned
-    public void RegisterVideoPlayer(VideoPlayer vp)
-    {
-        currentVideoPlayer = vp;
-
-        // If user already clicked before spawn
-        if (pendingVideoIndex >= 0)
+        // Optional safety reset
+        foreach (var vp in FindObjectsOfType<VideoPlayer>())
         {
-            PlayVideo(pendingVideoIndex);
-            pendingVideoIndex = -1;
+            vp.gameObject.SetActive(false);
         }
     }
 
-    // Called by UI buttons
-    public void PlayVideo(int index)
+    public void RegisterVideoPlayer(int id, VideoPlayer vp)
     {
-        if (currentVideoPlayer == null)
+        if (!videoPlayerMap.ContainsKey(id))
         {
-            // AR object not spawned yet  store request
-            pendingVideoIndex = index;
+            videoPlayerMap.Add(id, vp);
+            vp.gameObject.SetActive(false); // disable initially
+            Debug.Log("Registered VideoPlayer ID: " + id);
+        }
+    }
+
+    public void PlayVideo(int playerID, int videoIndex)
+    {
+        if (!videoPlayerMap.ContainsKey(playerID))
+        {
+            Debug.LogWarning("No VideoPlayer found for ID: " + playerID);
             return;
         }
 
-        if (index < 0 || index >= videoClips.Count)
+        if (videoIndex < 0 || videoIndex >= videoClips.Count)
         {
             Debug.LogWarning("Invalid video index");
             return;
         }
-        Debug.Log("Playing video" + index);
-        currentVideoPlayer.clip = videoClips[index];
-        currentVideoPlayer.Play();
+
+        // NEW -------------------------
+        DisableAllExcept(playerID);
+        currentActivePlayerID = playerID;
+        // -----------------------------
+
+        VideoPlayer vp = videoPlayerMap[playerID];
+
+        vp.gameObject.SetActive(true); // ensure it's enabled
+        vp.clip = videoClips[videoIndex];
+        vp.Play();
+
+        Debug.Log($"Playing video {videoIndex} on player {playerID}");
     }
+
+    // NEW -------------------------
+    private void DisableAllExcept(int activeID)
+    {
+        foreach (var pair in videoPlayerMap)
+        {
+            if (pair.Key != activeID)
+            {
+                VideoPlayer vp = pair.Value;
+
+                if (vp != null)
+                {
+                    vp.Stop();
+                    vp.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+    // -----------------------------
 }

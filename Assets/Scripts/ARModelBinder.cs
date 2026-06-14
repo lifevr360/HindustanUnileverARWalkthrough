@@ -4,6 +4,7 @@ using UnityEngine.XR.ARFoundation;
 public class ARModelBinder : MonoBehaviour
 {
     public static ChildSelector Selector { get; private set; }
+    public static Transform CurrentModelRoot { get; private set; }
 
     [SerializeField] ARTrackedImageManager manager;
 
@@ -18,7 +19,11 @@ public class ARModelBinder : MonoBehaviour
             // searches the whole subtree, so it finds ChildSelector even on a grandchild
             var sel = img.GetComponentInChildren<ChildSelector>(true);
             Debug.Log("Selector" +sel);
-            if (sel) Selector = sel;
+            if (sel)
+            {
+                Selector = sel;
+                CurrentModelRoot = sel.transform; // OffsetObject
+            }
         }
     }
 }

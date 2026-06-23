@@ -20,11 +20,9 @@ public class Node
     [Header("Actions (Leaf Nodes Only)")]
     public UnityEvent onSelected;
 
-    // NEW -------------------------
     [Header("Progress")]
     public GameObject tickIcon;
     [HideInInspector] public bool isCompleted = false;
-    // -----------------------------
 
     public bool HasChildren
     {
@@ -46,9 +44,7 @@ public class NodeFramework : MonoBehaviour
     private Stack<Node> childStack = new Stack<Node>();
     private List<Node> activeRootChildren = null;
 
-    // NEW -------------------------
     private Node currentRoot = null;
-    // -----------------------------
 
     void Awake()
     {
@@ -59,10 +55,8 @@ public class NodeFramework : MonoBehaviour
             if (root.button != null)
                 root.button.gameObject.SetActive(true);
 
-            // NEW -----------------
             if (root.tickIcon != null)
                 root.tickIcon.SetActive(false);
-            // ---------------------
         }
 
         HideAllChildren();
@@ -101,16 +95,23 @@ public class NodeFramework : MonoBehaviour
         if (rootNodes.Contains(node))
         {
             childStack.Clear();
-            activeRootChildren = node.children;
-
-            // NEW -----------------
             currentRoot = node;
-            // ---------------------
 
             if (node.HasChildren)
             {
+                activeRootChildren = node.children;
                 RenderChildren(activeRootChildren);
                 ShowBackground(node.background);
+            }
+            else
+            {
+                // Childless root: hide everyone else, show nothing new
+                activeRootChildren = null;
+                RenderChildren(null);
+                ShowBackground(rootBackground);
+
+                // Mark complete immediately on click
+                MarkRootCompleted(node);
             }
 
             return;
@@ -152,20 +153,25 @@ public class NodeFramework : MonoBehaviour
         // Case 3: back to root
         activeRootChildren = null;
 
-        // NEW -------------------------
-        if (currentRoot != null && !currentRoot.isCompleted)
-        {
-            currentRoot.isCompleted = true;
-
-            if (currentRoot.tickIcon != null)
-                currentRoot.tickIcon.SetActive(true);
-
-            CheckAllCompleted();
-        }
-        // -----------------------------
+        if (currentRoot != null)
+            MarkRootCompleted(currentRoot);
 
         RenderChildren(null);
         ShowBackground(rootBackground);
+    }
+
+    // Marks a root as completed, shows its tick, and re-checks overall completion.
+    private void MarkRootCompleted(Node root)
+    {
+        if (root == null || root.isCompleted)
+            return;
+
+        root.isCompleted = true;
+
+        if (root.tickIcon != null)
+            root.tickIcon.SetActive(true);
+
+        CheckAllCompleted();
     }
 
     private void RenderChildren(List<Node> nodesToShow)

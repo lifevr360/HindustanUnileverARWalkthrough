@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class ARUIController : MonoBehaviour
 {
@@ -68,4 +69,10 @@ public class ARUIController : MonoBehaviour
         // Refresh environment lighting
         DynamicGI.UpdateEnvironment();
     }
+
+    public void LoadSceneByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
+
 }

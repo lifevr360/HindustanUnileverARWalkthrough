@@ -1,13 +1,21 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ARUIController : MonoBehaviour
 {
     public GameObject adminLight;
     public GameObject sceneLight;
 
-    public Color ambientColor = Color.gray;
+   
+    [Header("Ambient Settings")]
+    [SerializeField] private Color targetAmbientColor = new Color(0.0078f, 0f, 0.482f); // #02007B
+    [SerializeField] private float transitionDuration = 3f;
+    [SerializeField] private bool startFromWhite = true;
+
+    private Coroutine ambientCoroutine;
+
 
     void Start()
     {
@@ -49,30 +57,55 @@ public class ARUIController : MonoBehaviour
        SetSkyboxMode();
     }
 
-    public void SetAmbientColorMode()
+   public void SetAmbientColorMode()
     {
-        // Change Source from Skybox to Color
         RenderSettings.ambientMode = AmbientMode.Flat;
 
-        // Set the ambient color
-        RenderSettings.ambientLight = ambientColor;
+        if (ambientCoroutine != null)
+            StopCoroutine(ambientCoroutine);
 
-        // Refresh environment lighting
+        ambientCoroutine = StartCoroutine(
+            SmoothAmbientTransition(targetAmbientColor));
+    }
+
+    private IEnumerator SmoothAmbientTransition(Color targetColor)
+    {
+        Color startColor;
+
+        if (startFromWhite)
+        {
+            startColor = Color.white;
+            RenderSettings.ambientLight = startColor;
+        }
+        else
+        {
+            startColor = RenderSettings.ambientLight;
+        }
+
+        float elapsed = 0f;
+
+        while (elapsed < transitionDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = Mathf.SmoothStep(0f, 1f, elapsed / transitionDuration);
+
+            RenderSettings.ambientLight =
+                Color.Lerp(startColor, targetColor, t);
+
+            yield return null;
+        }
+
+        RenderSettings.ambientLight = targetColor;
         DynamicGI.UpdateEnvironment();
     }
 
     public void SetSkyboxMode()
     {
-        // Change Source back to Skybox
-        RenderSettings.ambientMode = AmbientMode.Skybox;
+        if (ambientCoroutine != null)
+            StopCoroutine(ambientCoroutine);
 
-        // Refresh environment lighting
+        RenderSettings.ambientMode = AmbientMode.Skybox;
         DynamicGI.UpdateEnvironment();
     }
-
-    public void LoadSceneByIndex(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
-
 }

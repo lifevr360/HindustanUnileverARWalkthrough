@@ -422,6 +422,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 200917171}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 173611619}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: Activate
@@ -491,6 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - MakeNano
+  stepManager: 
 --- !u!1 &193017564
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +697,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - EntireModel
+  stepManager: 
+--- !u!1 &200917169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200917170}
+  - component: {fileID: 200917171}
+  m_Layer: 0
+  m_Name: MakeButtonTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &200917170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200917169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700594576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200917171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200917169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56819c70e824e04396c0b2fecbcf717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClicked: 000000000000
+  objectToEnable: {fileID: 0}
+  onAllButtonsClicked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7211561285343653799}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  totalButtons: 6
 --- !u!4 &237852452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2512387470890420967, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
@@ -1368,6 +1444,8 @@ Transform:
   m_Children:
   - {fileID: 367893008}
   - {fileID: 1261435782}
+  - {fileID: 718525255}
+  - {fileID: 200917170}
   - {fileID: 757366173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1390,6 +1468,68 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2512387469002778331, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
   m_PrefabInstance: {fileID: 331264285}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &718525254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718525255}
+  - component: {fileID: 718525256}
+  m_Layer: 0
+  m_Name: SourceButtonTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718525255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718525254}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700594576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &718525256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718525254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56819c70e824e04396c0b2fecbcf717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClicked: 000000
+  objectToEnable: {fileID: 0}
+  onAllButtonsClicked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6295832901329640304}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  totalButtons: 3
 --- !u!1 &757366172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,6 +1978,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 718525256}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &873401765
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1861,6 +2013,7 @@ MonoBehaviour:
   objectNamesToEnable:
   - RPMHubSpiderHub
   - EntireModel
+  stepManager: 
 --- !u!1 &1014930688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,6 +2138,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 718525256}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1014930692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,6 +2203,7 @@ MonoBehaviour:
   objectNamesToEnable:
   - SurfactantComplexSpiderWeb
   - EntireModel
+  stepManager: 
 --- !u!1 &1075000274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,7 +2408,7 @@ GameObject:
   - component: {fileID: 1261435782}
   - component: {fileID: 1261435783}
   m_Layer: 0
-  m_Name: ButtonTracker
+  m_Name: RootButtonTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2277,6 +2443,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonClicked: 00000000
   objectToEnable: {fileID: 193017564}
+  onAllButtonsClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  totalButtons: 4
 --- !u!1 &1273653290
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,6 +3222,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 200917171}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1585927983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3495,6 +3677,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 200917171}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1798551537}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: Activate
@@ -3564,6 +3758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - MakeAdaptiveMixer
+  stepManager: 
 --- !u!1 &1844228503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,6 +3883,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 718525256}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1844228507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3740,6 +3947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - HoleInTheWall
+  stepManager: 
 --- !u!1 &1845704376
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,6 +4055,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 200917171}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1845704383}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: Activate
@@ -3916,6 +4136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - MakeFutureCore
+  stepManager: 
 --- !u!1 &1870898968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2512387470528047719, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
@@ -4043,6 +4264,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 200917171}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2017050435}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: Activate
@@ -4112,6 +4345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - MakeCore
+  stepManager: 
 --- !u!1 &2143301559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,6 +4516,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 200917171}
+        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2147390603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4414,6 +4660,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7211561285343653799}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: DisableAllStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: DisableAdminLights
@@ -4695,6 +4953,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7211561285343653799}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: DisableAllStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: DisableAdminLights
@@ -4876,6 +5146,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8355102715119796186}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: DisableAllStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: DisableAdminLights
@@ -4939,6 +5221,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8355102715119796185}
         m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8355102715119796186}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5116,6 +5410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - EntireModel
+  stepManager: SourceStepManager
 --- !u!114 &6295832901329640305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5493,6 +5788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - EntireModel
+  stepManager: MakeStepManager
 --- !u!114 &7211561285343653800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,6 +5920,7 @@ MonoBehaviour:
   objectNamesToEnable:
   - PlanSpiderWeb
   - EntireModel
+  stepManager: PlanStepManager
 --- !u!114 &8503945280721378988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5668,6 +5965,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7211561285343653799}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: DisableAllStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: DisableAdminLights
@@ -5740,6 +6049,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8503945280721378989}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8503945280721378989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5754,6 +6075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - DeliverWareHouse
+  stepManager: DeliverStepManager
 --- !u!114 &8503945280721378990
 MonoBehaviour:
   m_ObjectHideFlags: 0

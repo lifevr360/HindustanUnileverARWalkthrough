@@ -28,10 +28,10 @@ public class ARVideoManager : MonoBehaviour
         Instance = this;
 
         // Optional safety reset
-        foreach (var vp in FindObjectsOfType<VideoPlayer>())
-        {
-            vp.gameObject.SetActive(false);
-        }
+        //foreach (var vp in FindObjectsOfType<VideoPlayer>())
+        //{
+        //    vp.gameObject.SetActive(false);
+       // }
     }
 
     public void RegisterVideoPlayer(int id, VideoPlayer vp)
@@ -39,7 +39,7 @@ public class ARVideoManager : MonoBehaviour
         if (!videoPlayerMap.ContainsKey(id))
         {
             videoPlayerMap.Add(id, vp);
-            vp.gameObject.SetActive(false); // disable initially
+            //vp.gameObject.SetActive(false); // disable initially
             Debug.Log("Registered VideoPlayer ID: " + id);
         }
     }

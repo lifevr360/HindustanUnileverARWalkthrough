@@ -22,10 +22,6 @@ public class StepSequenceManager : MonoBehaviour
         public List<GameObject> objectsToEnable = new List<GameObject>();
 
 
-        [Header("Objects To Disable")]
-        public List<GameObject> objectsToDisable = new List<GameObject>();
-
-
         [Header("Animation Trigger")]
         public Animator animator;
         public string animationTriggerName;
@@ -38,19 +34,118 @@ public class StepSequenceManager : MonoBehaviour
     public List<StepData> steps = new List<StepData>();
 
 
-
     [Header("Audio Source")]
     public AudioSource audioSource;
-
 
 
     private int currentStepIndex = 0;
 
 
-    void Start()
+
+    //=========================================================
+    // ENABLE
+    //=========================================================
+
+    private void OnEnable()
     {
+        ResetSequence();
         StartSequence();
     }
+
+
+
+    //=========================================================
+    // DISABLE
+    //=========================================================
+
+    private void OnDisable()
+    {
+        ResetSequence();
+    }
+
+
+
+
+
+    //=========================================================
+    // RESET COMPLETE SEQUENCE
+    //=========================================================
+
+    private void ResetSequence()
+    {
+
+        StopAllCoroutines();
+
+
+        // Stop audio
+        if(audioSource != null)
+        {
+            audioSource.Stop();
+            audioSource.clip = null;
+            audioSource.loop = false;
+        }
+
+
+
+        // Reset step index
+        currentStepIndex = 0;
+
+
+
+        foreach(StepData step in steps)
+        {
+
+            // Disable objects enabled by steps
+            foreach(GameObject obj in step.objectsToEnable)
+            {
+                if(obj != null)
+                {
+                    obj.SetActive(false);
+                }
+            }
+
+
+
+            // Reset animation
+            ResetAnimator(step.animator, step.animationTriggerName);
+
+        }
+
+
+        Debug.Log("Sequence Reset Complete");
+
+    }
+
+
+
+
+
+    //=========================================================
+    // RESET ANIMATOR
+    //=========================================================
+
+    private void ResetAnimator(Animator animator, string triggerName)
+    {
+
+        if(animator == null)
+            return;
+
+
+
+        if(!string.IsNullOrEmpty(triggerName))
+        {
+            animator.ResetTrigger(triggerName);
+        }
+
+
+        animator.Rebind();
+        animator.Update(0f);
+
+    }
+
+
+
+
 
     //=========================================================
     // START SEQUENCE
@@ -121,32 +216,6 @@ public class StepSequenceManager : MonoBehaviour
 
 
 
-        // DISABLE OBJECTS
-
-        foreach(GameObject obj in step.objectsToDisable)
-        {
-            if(obj != null)
-            {
-                obj.SetActive(false);
-            }
-        }
-
-
-
-
-        // TRIGGER ANIMATION
-
-        if(step.animator != null &&
-           !string.IsNullOrEmpty(step.animationTriggerName))
-        {
-
-            step.animator.SetTrigger(step.animationTriggerName);
-
-        }
-
-
-
-
 
         // AUDIO CONTROL
 
@@ -159,16 +228,16 @@ public class StepSequenceManager : MonoBehaviour
 
             if(step.loopAudio)
             {
-                // Loop audio does not block next step
+
+                TriggerAnimation(step);
 
                 CompleteStep();
 
             }
             else
             {
-                // Wait for audio completion
 
-                StartCoroutine(WaitForAudioFinish());
+                StartCoroutine(WaitForAudioFinish(step));
 
             }
 
@@ -176,7 +245,7 @@ public class StepSequenceManager : MonoBehaviour
         else
         {
 
-            // No audio assigned
+            TriggerAnimation(step);
 
             CompleteStep();
 
@@ -189,10 +258,10 @@ public class StepSequenceManager : MonoBehaviour
 
 
     //=========================================================
-    // WAIT FOR NON LOOP AUDIO
+    // WAIT FOR AUDIO FINISH
     //=========================================================
 
-    private IEnumerator WaitForAudioFinish()
+    private IEnumerator WaitForAudioFinish(StepData step)
     {
 
         while(audioSource != null && audioSource.isPlaying)
@@ -201,7 +270,37 @@ public class StepSequenceManager : MonoBehaviour
         }
 
 
+        TriggerAnimation(step);
+
+
         CompleteStep();
+
+    }
+
+
+
+
+
+    //=========================================================
+    // TRIGGER ANIMATION
+    //=========================================================
+
+    private void TriggerAnimation(StepData step)
+    {
+
+        if(step.animator != null &&
+           !string.IsNullOrEmpty(step.animationTriggerName))
+        {
+
+            Debug.Log(
+                "PLAYING ANIMATION : " +
+                step.animationTriggerName
+            );
+
+
+            step.animator.SetTrigger(step.animationTriggerName);
+
+        }
 
     }
 
@@ -248,8 +347,7 @@ public class StepSequenceManager : MonoBehaviour
 
 
     //=========================================================
-    // PUBLIC AUDIO FUNCTION
-    // Can be called from any other script
+    // AUDIO PLAY
     //=========================================================
 
     public void PlayAudio(AudioClip clip, bool loop)
@@ -297,7 +395,7 @@ public class StepSequenceManager : MonoBehaviour
 
 
     //=========================================================
-    // PLAY SPECIFIC STEP MANUALLY
+    // PLAY SPECIFIC STEP
     //=========================================================
 
     public void PlayStep(int stepIndex)
@@ -344,7 +442,7 @@ public class StepSequenceManager : MonoBehaviour
 
 
     //=========================================================
-    // CURRENT STEP INDEX
+    // GET CURRENT STEP
     //=========================================================
 
     public int GetCurrentStep()

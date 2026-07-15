@@ -134,12 +134,12 @@ GameObject:
   - component: {fileID: 16271688}
   - component: {fileID: 16271687}
   m_Layer: 0
-  m_Name: AdminLight
+  m_Name: FocusLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &16271687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4294967295
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -432,6 +432,18 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Nano
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 173611619}
@@ -501,8 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - MakeNano
+  objectNamesToEnable: []
   stepManager: 
 --- !u!1 &193017564
 GameObject:
@@ -542,7 +553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9447813, y: 0.06625}
   m_AnchorMax: {x: 0.9447813, y: 0.06625}
-  m_AnchoredPosition: {x: -327, y: -11.999878}
+  m_AnchoredPosition: {x: -327, y: -11.999817}
   m_SizeDelta: {x: 101.53, y: 45}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &193017567
@@ -949,6 +960,7 @@ GameObject:
   - component: {fileID: 367893008}
   - component: {fileID: 367893009}
   - component: {fileID: 367893010}
+  - component: {fileID: 367893011}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -983,7 +995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45dc985da02a70846929d5eeb1051f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adminLight: {fileID: 16271686}
+  focusLight: {fileID: 16271688}
+  focusLightObject: {fileID: 16271686}
   sceneLight: {fileID: 1075000274}
   targetAmbientColor: {r: 0.0078, g: 0, b: 0.482, a: 1}
   transitionDuration: 3
@@ -1003,6 +1016,20 @@ MonoBehaviour:
   scalePercentage: 0.1
   minScale: 0.2
   maxScale: 3
+--- !u!114 &367893011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367893007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef582c8d386e4a4ea0ec9b658a2ca7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMaterial: {fileID: 2100000, guid: 72d421458728942448a8d07ad694f2b7, type: 2}
+  scrollSpeedY: 0.5
 --- !u!1 &374127330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,7 +1983,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1990,6 +2017,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Everything
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &873401765
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2012,7 +2051,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - RPMHubSpiderHub
-  - EntireModel
   stepManager: 
 --- !u!1 &1014930688
 GameObject:
@@ -2116,7 +2154,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2148,6 +2186,18 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Everything
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1014930692
@@ -2202,7 +2252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - SurfactantComplexSpiderWeb
-  - EntireModel
   stepManager: 
 --- !u!1 &1075000274
 GameObject:
@@ -2221,7 +2270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1075000275
 Light:
   m_ObjectHideFlags: 0
@@ -3212,7 +3261,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3232,6 +3281,18 @@ MonoBehaviour:
           m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DarkLab
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1585927983
@@ -3667,7 +3728,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3687,6 +3748,18 @@ MonoBehaviour:
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: AdaptiveMixer
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1798551537}
@@ -3756,8 +3829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - MakeAdaptiveMixer
+  objectNamesToEnable: []
   stepManager: 
 --- !u!1 &1844228503
 GameObject:
@@ -3861,7 +3933,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3893,6 +3965,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HoleInTheWall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1844228507
@@ -3945,8 +4029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - HoleInTheWall
+  objectNamesToEnable: []
   stepManager: 
 --- !u!1 &1845704376
 GameObject:
@@ -4045,7 +4128,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4065,6 +4148,18 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FutureCore
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1845704383}
@@ -4134,8 +4229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - MakeFutureCore
+  objectNamesToEnable: []
   stepManager: 
 --- !u!1 &1870898968 stripped
 GameObject:
@@ -4156,7 +4250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: 3ea27784ab2ccad4c8f089cfe8dd6ff7, type: 2}
   m_MaxNumberOfMovingImages: 1
-  m_TrackedImagePrefab: {fileID: 4247462548681219807, guid: e465176bafc7cfb44a3629f6a4b1f3dc, type: 3}
+  m_TrackedImagePrefab: {fileID: 4247462548681219807, guid: f7df5fc74a52d694bbe1a57e9e7588af, type: 3}
 --- !u!1 &2017050428
 GameObject:
   m_ObjectHideFlags: 0
@@ -4254,7 +4348,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4286,6 +4380,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Core
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &2017050432
@@ -4343,8 +4449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - MakeCore
+  objectNamesToEnable: []
   stepManager: 
 --- !u!1 &2143301559
 GameObject:
@@ -4506,7 +4611,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4674,7 +4779,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4742,6 +4847,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Everything
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &978195767553213802
@@ -4967,7 +5084,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5035,6 +5152,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Everything
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &2977987337110641589
@@ -5160,7 +5289,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5240,6 +5369,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Everything
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &3576531342236675644
@@ -5408,8 +5549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - EntireModel
+  objectNamesToEnable: []
   stepManager: SourceStepManager
 --- !u!114 &6295832901329640305
 MonoBehaviour:
@@ -5786,8 +5926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - EntireModel
+  objectNamesToEnable: []
   stepManager: MakeStepManager
 --- !u!114 &7211561285343653800
 MonoBehaviour:
@@ -5919,7 +6058,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - PlanSpiderWeb
-  - EntireModel
   stepManager: PlanStepManager
 --- !u!114 &8503945280721378988
 MonoBehaviour:
@@ -5979,7 +6117,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: DisableAdminLights
+        m_MethodName: DisablefocusLightObjects
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6061,6 +6199,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 367893009}
+        m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Warehouse
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8503945280721378989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6073,8 +6223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e36317f0a8fc4a9d0b1c57ff8c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectNamesToEnable:
-  - DeliverWareHouse
+  objectNamesToEnable: []
   stepManager: DeliverStepManager
 --- !u!114 &8503945280721378990
 MonoBehaviour:

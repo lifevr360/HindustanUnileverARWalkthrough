@@ -5,7 +5,8 @@ using System.Collections;
 
 public class ARUIController : MonoBehaviour
 {
-    public GameObject adminLight;
+    [SerializeField] private Light focusLight;
+    public GameObject focusLightObject;
     public GameObject sceneLight;
 
    
@@ -19,7 +20,7 @@ public class ARUIController : MonoBehaviour
 
     void Start()
     {
-       adminLight.SetActive(false);
+       focusLightObject.SetActive(false);
        sceneLight.SetActive(true);  
     }
 
@@ -43,16 +44,41 @@ public class ARUIController : MonoBehaviour
         }
     }
 
-    public void EnableAdminLights()
+    public void SetCullingMask(string layerName)
     {
-       adminLight.SetActive(true);
+        switch (layerName)
+        {
+            case "Everything":
+                focusLight.cullingMask = ~0;    // All layers
+                return;
+
+            case "Nothing":
+                focusLight.cullingMask = 0;     // No layers
+                return;
+        }
+
+        int layer = LayerMask.NameToLayer(layerName);
+
+        if (layer == -1)
+        {
+            Debug.LogError($"Layer '{layerName}' does not exist.");
+            return;
+        }
+
+        focusLight.cullingMask = 1 << layer;
+        EnablefocusLightObjects();
+    }
+
+    public void EnablefocusLightObjects()
+    {
+       focusLightObject.SetActive(true);
        sceneLight.SetActive(false);
        SetAmbientColorMode();
     }
 
-    public void DisableAdminLights()
+    public void DisablefocusLightObjects()
     {
-       adminLight.SetActive(false);
+       focusLightObject.SetActive(false);
        sceneLight.SetActive(true);
        SetSkyboxMode();
     }

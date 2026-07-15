@@ -34,4 +34,10 @@ public class ButtonGroup : MonoBehaviour
             ARModelBinder.Mover.MoveToStep(index);
     }
 
+    public void ResetHULAnimation()
+    {
+          if (ARModelBinder.Mover != null)            // null until image is tracked
+            ARModelBinder.Selector.ResetAnimation();
+    }
+
 }

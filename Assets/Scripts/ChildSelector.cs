@@ -10,7 +10,7 @@ public class ChildSelector : MonoBehaviour
     [Header("Individual Objects")]
     [SerializeField] List<GameObject> objects = new();
 
-
+    public Animator animator;
     readonly Dictionary<string, GameObject> groupByName = new();
     readonly Dictionary<string, GameObject> objectByName = new();
 
@@ -32,7 +32,11 @@ public class ChildSelector : MonoBehaviour
         }
     }
 
-
+    public void ResetAnimation()
+    {
+        animator.Play(0, 0, 0f);   // Play default state from the beginning
+        animator.Update(0f);        // Apply immediately
+    }
 
     // Enable/Disable groups using multiple names
     public void EnableByName(string[] names)

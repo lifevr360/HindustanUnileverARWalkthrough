@@ -7,7 +7,7 @@ public class ARUIController : MonoBehaviour
 {
     [SerializeField] private Light focusLight;
     public GameObject focusLightObject;
-    public GameObject sceneLight;
+  
 
    
     [Header("Ambient Settings")]
@@ -18,11 +18,6 @@ public class ARUIController : MonoBehaviour
     private Coroutine ambientCoroutine;
 
 
-    void Start()
-    {
-       focusLightObject.SetActive(false);
-       sceneLight.SetActive(true);  
-    }
 
     public void ShowPart(int index)
     {
@@ -55,14 +50,14 @@ public class ARUIController : MonoBehaviour
             if (layerName == "Everything")
             {
                 focusLight.cullingMask = ~0;
-                EnablefocusLightObjects();
+                DisablefocusLightObjects();
                 return;
             }
 
             if (layerName == "Nothing")
             {
                 focusLight.cullingMask = 0;
-                EnablefocusLightObjects();
+                DisablefocusLightObjects();
                 return;
             }
 
@@ -83,15 +78,11 @@ public class ARUIController : MonoBehaviour
 
     public void EnablefocusLightObjects()
     {
-       focusLightObject.SetActive(true);
-       sceneLight.SetActive(false);
        SetAmbientColorMode();
     }
 
     public void DisablefocusLightObjects()
     {
-       focusLightObject.SetActive(false);
-       sceneLight.SetActive(true);
        SetSkyboxMode();
     }
 

@@ -15368,7 +15368,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dbdb90f3122892646b6aef9c1c1c4346, type: 2}
+  - {fileID: 2100000, guid: c45d8953c03e9e340b9ae0fb030e6806, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26204,14 +26204,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1738836556415769407}
-  - component: {fileID: 3352982678984232461}
+  - component: {fileID: 7831852734153651042}
   m_Layer: 0
   m_Name: LTFM_LOGO_V01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1738836556415769407
 Transform:
   m_ObjectHideFlags: 0
@@ -26232,29 +26232,33 @@ Transform:
   - {fileID: 5902000719394795832}
   - {fileID: 5522477706984238077}
   - {fileID: 5267731092562809341}
+  - {fileID: 1860304072943840649}
+  - {fileID: 310328764769377467}
+  - {fileID: 5643480196431821283}
+  - {fileID: 7503989313476304963}
+  - {fileID: 2352333980919861285}
   m_Father: {fileID: 7934043055044729996}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!95 &3352982678984232461
-Animator:
-  serializedVersion: 5
+--- !u!114 &7831852734153651042
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399007661152813445}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 55c2becd6de4cad449381c964e5a95e0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87baef9e1749727439f64f4a6125f589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToMove: {fileID: 5267731092562809341}
+  checkpoints:
+  - {fileID: 1860304072943840649}
+  - {fileID: 310328764769377467}
+  - {fileID: 5643480196431821283}
+  - {fileID: 7503989313476304963}
+  - {fileID: 2352333980919861285}
+  speed: 0.3
 --- !u!1 &1401870147432979939
 GameObject:
   m_ObjectHideFlags: 0
@@ -35146,10 +35150,9 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: f51eafe6939679d4a9ee942d608e862a, type: 3}
     loopAudio: 0
     objectsToEnable:
-    - {fileID: 1399007661152813445}
     - {fileID: 7920499088081521900}
-    animator: {fileID: 3352982678984232461}
-    animationTriggerName: LTFM_Make
+    animator: {fileID: 0}
+    animationTriggerName: 
   audioSource: {fileID: 6020306515669334901}
 --- !u!1 &1826675230597108432
 GameObject:
@@ -48553,6 +48556,37 @@ Transform:
   - {fileID: 2191063303748503158}
   m_Father: {fileID: 4486762771073148502}
   m_LocalEulerAnglesHint: {x: 77.06272, y: -117.04621, z: 159.20982}
+--- !u!1 &2542230930354243833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2352333980919861285}
+  m_Layer: 0
+  m_Name: Checkpoints_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2352333980919861285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542230930354243833}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03289, y: 0, z: 0.00132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1738836556415769407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2544724278855041836
 GameObject:
   m_ObjectHideFlags: 0
@@ -61055,7 +61089,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88a61c3e3e16b424aa08b78a6549d315, type: 2}
+  - {fileID: 2100000, guid: f351223746c222a4dadbfa7dbb872c12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64778,10 +64812,9 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: f51eafe6939679d4a9ee942d608e862a, type: 3}
     loopAudio: 0
     objectsToEnable:
-    - {fileID: 1399007661152813445}
     - {fileID: 284815298985532010}
-    animator: {fileID: 3352982678984232461}
-    animationTriggerName: LTFM_Plan
+    animator: {fileID: 0}
+    animationTriggerName: 
   audioSource: {fileID: 6020306515669334901}
 --- !u!1 &3364757044211811036
 GameObject:
@@ -66610,7 +66643,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 355e97e3db0d32f47923002b23f09af8, type: 2}
+  - {fileID: 2100000, guid: ac173f3c51d54d846a8b4612edd2934e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82346,6 +82379,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4339586468189762765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310328764769377467}
+  m_Layer: 0
+  m_Name: Checkpoints_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310328764769377467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339586468189762765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.01691, y: 0, z: 0.00132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1738836556415769407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4341234072486732833
 GameObject:
   m_ObjectHideFlags: 0
@@ -96269,7 +96333,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3389329ea315ad4e98a2357a5e96306, type: 2}
+  - {fileID: 2100000, guid: c63b81e04058a574698ea55202986ec0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116676,6 +116740,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6204576460798948874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860304072943840649}
+  m_Layer: 0
+  m_Name: Checkpoints_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860304072943840649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204576460798948874}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03168, y: 0, z: 0.00132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1738836556415769407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6206284296360945930
 GameObject:
   m_ObjectHideFlags: 0
@@ -133022,10 +133117,9 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: f51eafe6939679d4a9ee942d608e862a, type: 3}
     loopAudio: 0
     objectsToEnable:
-    - {fileID: 1399007661152813445}
     - {fileID: 177653157350360688}
-    animator: {fileID: 3352982678984232461}
-    animationTriggerName: LTFM_Deliver
+    animator: {fileID: 0}
+    animationTriggerName: 
   audioSource: {fileID: 6020306515669334901}
 --- !u!1 &7177391336500403047
 GameObject:
@@ -141127,10 +141221,9 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: f51eafe6939679d4a9ee942d608e862a, type: 3}
     loopAudio: 0
     objectsToEnable:
-    - {fileID: 1399007661152813445}
     - {fileID: 6081045068756132551}
-    animator: {fileID: 3352982678984232461}
-    animationTriggerName: LTFM_Source
+    animator: {fileID: 0}
+    animationTriggerName: 
   audioSource: {fileID: 6020306515669334901}
 --- !u!1 &7616180866038309113
 GameObject:
@@ -157498,8 +157591,7 @@ MonoBehaviour:
   - stepName: 
     audioClip: {fileID: 8300000, guid: 63218ffb9e01864478cbf351b9866bb5, type: 3}
     loopAudio: 0
-    objectsToEnable:
-    - {fileID: 1399007661152813445}
+    objectsToEnable: []
     animator: {fileID: 0}
     animationTriggerName: 
   audioSource: {fileID: 6020306515669334901}
@@ -161588,6 +161680,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8741995401582449573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7503989313476304963}
+  m_Layer: 0
+  m_Name: Checkpoints_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7503989313476304963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741995401582449573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01854, y: 0, z: 0.00132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1738836556415769407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8743927272642986108
 GameObject:
   m_ObjectHideFlags: 0
@@ -166603,6 +166726,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &9012315652769022629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5643480196431821283}
+  m_Layer: 0
+  m_Name: Checkpoints_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5643480196431821283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9012315652769022629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00156, y: 0, z: 0.00132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1738836556415769407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9013744289046294081
 GameObject:
   m_ObjectHideFlags: 0

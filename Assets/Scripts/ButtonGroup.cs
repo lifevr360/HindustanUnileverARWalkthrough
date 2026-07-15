@@ -28,5 +28,10 @@ public class ButtonGroup : MonoBehaviour
         }
     }
    
+   public void MoveLTFM(int index)
+    {
+        if (ARModelBinder.Mover != null)            // null until image is tracked
+            ARModelBinder.Mover.MoveToStep(index);
+    }
 
 }

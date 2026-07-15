@@ -138,7 +138,7 @@ public class StepSequenceManager : MonoBehaviour
         }
 
 
-        animator.Rebind();
+        //animator.Rebind();
         animator.Update(0f);
 
     }

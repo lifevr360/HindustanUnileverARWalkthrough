@@ -5,6 +5,7 @@ public class ARModelBinder : MonoBehaviour
 {
     public static ChildSelector Selector { get; private set; }
     public static Transform CurrentModelRoot { get; private set; }
+    public static StepMover Mover { get; private set; }
 
     [SerializeField] ARTrackedImageManager manager;
 
@@ -13,16 +14,20 @@ public class ARModelBinder : MonoBehaviour
 
     void OnChanged(ARTrackedImagesChangedEventArgs e)
     {
-        Debug.Log("Image Tracked");
         foreach (var img in e.added)
         {
-            // searches the whole subtree, so it finds ChildSelector even on a grandchild
             var sel = img.GetComponentInChildren<ChildSelector>(true);
-            Debug.Log("Selector" +sel);
             if (sel)
             {
                 Selector = sel;
                 CurrentModelRoot = sel.transform; // OffsetObject
+            }
+
+            var mover = img.GetComponentInChildren<StepMover>(true);
+            if (mover)
+            {
+                Mover = mover;
+                Debug.Log("StepMover bound: " + mover.name);
             }
         }
     }

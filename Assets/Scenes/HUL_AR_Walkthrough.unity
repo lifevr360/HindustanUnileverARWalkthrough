@@ -443,7 +443,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Nano
+          m_StringArgument: Nano,LTFM
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 173611619}
@@ -553,7 +553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9447813, y: 0.06625}
   m_AnchorMax: {x: 0.9447813, y: 0.06625}
-  m_AnchoredPosition: {x: -327, y: -11.999817}
+  m_AnchoredPosition: {x: -327, y: -11.999756}
   m_SizeDelta: {x: 101.53, y: 45}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &193017567
@@ -626,7 +626,19 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
-        m_MethodName: EnableAdminLights
+        m_MethodName: SetCullingMask
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Admin,DarkLab
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 193017571}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -708,7 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable:
   - EntireModel
-  stepManager: 
+  stepManager: AdminStepManager
 --- !u!1 &200917169
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,7 +3304,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: DarkLab
+          m_StringArgument: DarkLab,LTFM
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1585927983
@@ -3759,7 +3771,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: AdaptiveMixer
+          m_StringArgument: AdaptiveMixer,LTFM
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1798551537}
@@ -3976,7 +3988,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: HoleInTheWall
+          m_StringArgument: HoleInTheWall,LTFM
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1844228507
@@ -4159,7 +4171,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: FutureCore
+          m_StringArgument: FutureCore,LTFM
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1845704383}
@@ -4391,7 +4403,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Core
+          m_StringArgument: Core,LTFM
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &2017050432
@@ -6244,7 +6256,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Warehouse
+          m_StringArgument: Warehouse,LTFM
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8503945280721378989}

@@ -44,28 +44,40 @@ public class ARUIController : MonoBehaviour
         }
     }
 
-    public void SetCullingMask(string layerName)
+   public void SetCullingMask(string layerNames)
     {
-        switch (layerName)
-        {
-            case "Everything":
-                focusLight.cullingMask = ~0;    // All layers
-                return;
+        int mask = 0;
 
-            case "Nothing":
-                focusLight.cullingMask = 0;     // No layers
+        foreach (string name in layerNames.Split(','))
+        {
+            string layerName = name.Trim();
+
+            if (layerName == "Everything")
+            {
+                focusLight.cullingMask = ~0;
+                EnablefocusLightObjects();
                 return;
+            }
+
+            if (layerName == "Nothing")
+            {
+                focusLight.cullingMask = 0;
+                EnablefocusLightObjects();
+                return;
+            }
+
+            int layer = LayerMask.NameToLayer(layerName);
+
+            if (layer == -1)
+            {
+                Debug.LogError($"Layer '{layerName}' does not exist.");
+                continue;
+            }
+
+            mask |= 1 << layer;
         }
 
-        int layer = LayerMask.NameToLayer(layerName);
-
-        if (layer == -1)
-        {
-            Debug.LogError($"Layer '{layerName}' does not exist.");
-            return;
-        }
-
-        focusLight.cullingMask = 1 << layer;
+        focusLight.cullingMask = mask;
         EnablefocusLightObjects();
     }
 

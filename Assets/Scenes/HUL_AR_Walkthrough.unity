@@ -327,7 +327,6 @@ GameObject:
   - component: {fileID: 173611616}
   - component: {fileID: 173611615}
   - component: {fileID: 173611613}
-  - component: {fileID: 173611618}
   - component: {fileID: 173611619}
   m_Layer: 5
   m_Name: Nano
@@ -422,18 +421,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 200917171}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 173611619}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: MoveLTFM
@@ -468,6 +455,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Nano,LTFM
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 01d56f1999da4ec45a78a26b0657f795, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 173611619}
@@ -509,22 +508,6 @@ RectTransform:
   m_AnchoredPosition: {x: 26.76744, y: -1.2999992}
   m_SizeDelta: {x: 66.5983, y: 26.4541}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &173611618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173611612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 7
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &173611619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,6 +655,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: e4db77aa36cd2d74398b5411630da663, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &193017568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +740,12 @@ MonoBehaviour:
   objectNamesToEnable:
   - EntireModel
   stepManager: AdminStepManager
---- !u!1 &200917169
+--- !u!4 &237852452 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2512387470890420967, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
+  m_PrefabInstance: {fileID: 331264285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &316652734
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -753,22 +753,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 200917170}
-  - component: {fileID: 200917171}
+  - component: {fileID: 316652735}
+  - component: {fileID: 316652737}
+  - component: {fileID: 316652736}
   m_Layer: 0
-  m_Name: MakeButtonTracker
+  m_Name: VoiceOverManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &200917170
+--- !u!4 &316652735
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200917169}
+  m_GameObject: {fileID: 316652734}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -777,41 +778,115 @@ Transform:
   m_Children: []
   m_Father: {fileID: 700594576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &200917171
+--- !u!82 &316652736
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316652734}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &316652737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200917169}
+  m_GameObject: {fileID: 316652734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56819c70e824e04396c0b2fecbcf717, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f86dcd6dfdfd7147bac6ce4bb87e666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClicked: 000000000000
-  objectToEnable: {fileID: 0}
-  onAllButtonsClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7211561285343653799}
-        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
-        m_MethodName: EnableStepManager
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  totalButtons: 6
---- !u!4 &237852452 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2512387470890420967, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
-  m_PrefabInstance: {fileID: 331264285}
-  m_PrefabAsset: {fileID: 0}
+  audioSource: {fileID: 316652736}
 --- !u!1 &327388861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,9 +1581,8 @@ Transform:
   m_Children:
   - {fileID: 367893008}
   - {fileID: 1261435782}
-  - {fileID: 718525255}
-  - {fileID: 200917170}
   - {fileID: 757366173}
+  - {fileID: 316652735}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &700594577
@@ -1530,68 +1604,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2512387469002778331, guid: 48cb3fb68c91eb94999fd99957eb0cae, type: 3}
   m_PrefabInstance: {fileID: 331264285}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &718525254
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 718525255}
-  - component: {fileID: 718525256}
-  m_Layer: 0
-  m_Name: SourceButtonTracker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &718525255
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718525254}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 700594576}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &718525256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718525254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56819c70e824e04396c0b2fecbcf717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonClicked: 000000
-  objectToEnable: {fileID: 0}
-  onAllButtonsClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6295832901329640304}
-        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
-        m_MethodName: EnableStepManager
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  totalButtons: 3
 --- !u!1 &757366172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,7 +1614,6 @@ GameObject:
   m_Component:
   - component: {fileID: 757366173}
   - component: {fileID: 757366174}
-  - component: {fileID: 757366175}
   - component: {fileID: 757366176}
   m_Layer: 0
   m_Name: VideoManager
@@ -1639,33 +1650,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arCamera: {fileID: 712090051}
---- !u!114 &757366175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757366172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ea7b7de781335418ce87fc571e9f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  videoClips:
-  - {fileID: 32900000, guid: c11070f56b3b0ff46ab53525d9ab9a9d, type: 3}
-  - {fileID: 32900000, guid: 6f288986f31071d4091c2a547254a70f, type: 3}
-  - {fileID: 32900000, guid: fa2ec5e7d274e28469a5d54076f65cdc, type: 3}
-  - {fileID: 32900000, guid: 4c986e291e14a234e9961002ec1d33f6, type: 3}
-  - {fileID: 32900000, guid: 457535f1e666d2f4492de7350acfb8de, type: 3}
-  - {fileID: 32900000, guid: b55f05096fa39474896953aa2756b786, type: 3}
-  - {fileID: 32900000, guid: e4df3bbdc2427c843ab57aed3ead2da3, type: 3}
-  - {fileID: 32900000, guid: 31abc0547ef720b48a3227ff06e0fc05, type: 3}
-  - {fileID: 32900000, guid: fefcb62e05d71ce40bd3a1f636d01c1b, type: 3}
-  - {fileID: 32900000, guid: 2fe834c6b1e52194a8d2fd9975e6f80f, type: 3}
-  - {fileID: 32900000, guid: 457535f1e666d2f4492de7350acfb8de, type: 3}
-  - {fileID: 32900000, guid: d1d7332158b726f4f8c611547f255997, type: 3}
-  - {fileID: 32900000, guid: e474dc19522252f49b10e4dd5017ba8f, type: 3}
-  - {fileID: 32900000, guid: 2fe834c6b1e52194a8d2fd9975e6f80f, type: 3}
 --- !u!114 &757366176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1898,7 +1882,6 @@ GameObject:
   - component: {fileID: 873401765}
   - component: {fileID: 873401764}
   - component: {fileID: 873401763}
-  - component: {fileID: 873401762}
   - component: {fileID: 873401766}
   m_Layer: 5
   m_Name: RPMHub
@@ -1926,22 +1909,6 @@ RectTransform:
   m_AnchoredPosition: {x: 49, y: 0.7874985}
   m_SizeDelta: {x: 95.7636, y: 33.5554}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &873401762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873401760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 3
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &873401763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,18 +2007,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 718525256}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: SetCullingMask
@@ -2083,6 +2038,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 4d03bcb3601768346b23ae8f84418c56, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2123,7 +2090,6 @@ GameObject:
   - component: {fileID: 1014930693}
   - component: {fileID: 1014930692}
   - component: {fileID: 1014930691}
-  - component: {fileID: 1014930690}
   - component: {fileID: 1014930694}
   m_Layer: 5
   m_Name: SurfactantComplex
@@ -2151,22 +2117,6 @@ RectTransform:
   m_AnchoredPosition: {x: 90, y: 2.2100906}
   m_SizeDelta: {x: 144.1217, y: 36.2252}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1014930690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014930688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 4
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &1014930691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2235,18 +2185,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 718525256}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: SetCullingMask
@@ -2278,6 +2216,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 3fd3f7defc264c54788bb9375530c506, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2761,7 +2711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.11000001}
   m_AnchorMax: {x: 0, y: 0.11000001}
-  m_AnchoredPosition: {x: 68, y: -58.000122}
+  m_AnchoredPosition: {x: 68, y: -58.000244}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1346870247
@@ -3271,7 +3221,6 @@ GameObject:
   - component: {fileID: 1585927984}
   - component: {fileID: 1585927983}
   - component: {fileID: 1585927982}
-  - component: {fileID: 1585927985}
   - component: {fileID: 1585927986}
   m_Layer: 5
   m_Name: DarkLab
@@ -3355,18 +3304,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 200917171}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1585927986}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: MoveLTFM
@@ -3398,6 +3335,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a152b69348019794fbe63cb2aff494ab, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3441,22 +3390,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585927979}
   m_CullTransparentMesh: 0
---- !u!114 &1585927985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585927979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 10
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &1585927986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3765,7 +3698,6 @@ GameObject:
   - component: {fileID: 1798551534}
   - component: {fileID: 1798551531}
   - component: {fileID: 1798551533}
-  - component: {fileID: 1798551536}
   - component: {fileID: 1798551537}
   m_Layer: 5
   m_Name: AdaptiveMixer
@@ -3860,18 +3792,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 200917171}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1798551537}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: MoveLTFM
@@ -3906,6 +3826,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: AdaptiveMixer,LTFM
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 9811cca2496ea484996c13acb1623e52, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1798551537}
@@ -3947,22 +3879,6 @@ RectTransform:
   m_AnchoredPosition: {x: 22.199997, y: -0.9000015}
   m_SizeDelta: {x: 89.3042, y: 26.9692}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1798551536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798551530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 8
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &1798551537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3989,7 +3905,6 @@ GameObject:
   - component: {fileID: 1844228508}
   - component: {fileID: 1844228507}
   - component: {fileID: 1844228506}
-  - component: {fileID: 1844228505}
   - component: {fileID: 1844228509}
   m_Layer: 5
   m_Name: HoleInTheWall
@@ -4017,22 +3932,6 @@ RectTransform:
   m_AnchoredPosition: {x: -134, y: -6.0679016}
   m_SizeDelta: {x: 159.5957, y: 35.1339}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1844228505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844228503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 2
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &1844228506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4101,18 +4000,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 718525256}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: SetCullingMask
@@ -4144,6 +4031,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 88362f7e9d755a84d9c14067fb8580b6, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4213,7 +4112,6 @@ GameObject:
   - component: {fileID: 1845704380}
   - component: {fileID: 1845704379}
   - component: {fileID: 1845704377}
-  - component: {fileID: 1845704382}
   - component: {fileID: 1845704383}
   m_Layer: 5
   m_Name: FutureCore
@@ -4308,18 +4206,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 200917171}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1845704383}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: MoveLTFM
@@ -4354,6 +4240,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: FutureCore,LTFM
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: c0470319d06deeb45a5f58ba1aa3ab00, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1845704383}
@@ -4395,22 +4293,6 @@ RectTransform:
   m_AnchoredPosition: {x: 36, y: -3.5}
   m_SizeDelta: {x: 85.5707, y: 29.559}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1845704382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845704376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 6
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &1845704383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4457,7 +4339,6 @@ GameObject:
   - component: {fileID: 2017050432}
   - component: {fileID: 2017050429}
   - component: {fileID: 2017050431}
-  - component: {fileID: 2017050434}
   - component: {fileID: 2017050435}
   m_Layer: 5
   m_Name: Core
@@ -4552,18 +4433,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 200917171}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2017050435}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: MoveLTFM
@@ -4600,6 +4469,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 299b4d116ccfd6744b6e9d4bc8b14660, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &2017050432
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4627,22 +4508,6 @@ RectTransform:
   m_AnchoredPosition: {x: -144, y: 4.300001}
   m_SizeDelta: {x: 91.6563, y: 27.5452}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &2017050434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017050428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 5
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &2017050435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4744,7 +4609,6 @@ GameObject:
   - component: {fileID: 2147390604}
   - component: {fileID: 2147390603}
   - component: {fileID: 2147390602}
-  - component: {fileID: 2147390605}
   - component: {fileID: 2147390606}
   m_Layer: 5
   m_Name: Utility
@@ -4828,18 +4692,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 200917171}
-        m_TargetAssemblyTypeName: ButtonTracker, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2147390606}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: MoveLTFM
@@ -4871,6 +4723,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0cef2c9d04b35aa49b493e568e5fbd5a, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4914,22 +4778,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147390599}
   m_CullTransparentMesh: 0
---- !u!114 &2147390605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2147390599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 9
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!114 &2147390606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5094,18 +4942,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7211561285343653800}
-        m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: SetCullingMask
@@ -5130,6 +4966,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 88f58f9371d5faa4fa14f01274cee506, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7211561285343653799}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &978195767553213802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5141,7 +5001,6 @@ GameObject:
   - component: {fileID: 8355102715119796184}
   - component: {fileID: 1973360099314795246}
   - component: {fileID: 3407735516864641123}
-  - component: {fileID: 8355102715119796185}
   - component: {fileID: 8355102715119796186}
   m_Layer: 5
   m_Name: Plan
@@ -5411,18 +5270,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6295832901329640305}
-        m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 367893009}
         m_TargetAssemblyTypeName: ARUIController, Assembly-CSharp
         m_MethodName: SetCullingMask
@@ -5438,6 +5285,30 @@ MonoBehaviour:
       - m_Target: {fileID: 6295832901329640304}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: ResetHULAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 93a96c458e4355c44a88c9b631e2dd1b, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6295832901329640304}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5504,7 +5375,6 @@ GameObject:
   - component: {fileID: 635310495909423559}
   - component: {fileID: 749716305372520552}
   - component: {fileID: 7211561285343653799}
-  - component: {fileID: 7211561285343653800}
   m_Layer: 5
   m_Name: Make
   m_TagString: Untagged
@@ -5628,18 +5498,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8355102715119796185}
-        m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8355102715119796186}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: EnableStepManager
@@ -5683,6 +5541,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: d74972e399b699041befca29c0e59740, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5834,7 +5704,6 @@ GameObject:
   - component: {fileID: 3980304990591966413}
   - component: {fileID: 2957610281587727518}
   - component: {fileID: 6295832901329640304}
-  - component: {fileID: 6295832901329640305}
   m_Layer: 5
   m_Name: Source
   m_TagString: Untagged
@@ -5856,22 +5725,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable: []
   stepManager: SourceStepManager
---- !u!114 &6295832901329640305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6295832901329640303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 3
-  videoIndex: 3
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!1 &6461089977639352876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5954,7 +5807,7 @@ MonoBehaviour:
     onSelected:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8355102715119796185}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
           m_MethodName: Play
           m_Mode: 1
@@ -5979,7 +5832,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1844228505}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6000,7 +5853,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 873401762}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6021,7 +5874,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1014930690}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6051,7 +5904,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 2017050434}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6072,7 +5925,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1845704382}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6093,7 +5946,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 173611618}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6114,7 +5967,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1798551536}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6135,7 +5988,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 2147390605}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6156,7 +6009,7 @@ MonoBehaviour:
       onSelected:
         m_PersistentCalls:
           m_Calls:
-          - m_Target: {fileID: 1585927985}
+          - m_Target: {fileID: 0}
             m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
             m_MethodName: Play
             m_Mode: 1
@@ -6182,7 +6035,7 @@ MonoBehaviour:
     onSelected:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8503945280721378990}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
           m_MethodName: Play
           m_Mode: 1
@@ -6233,22 +6086,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable: []
   stepManager: MakeStepManager
---- !u!114 &7211561285343653800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3265619254810816657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 3
-  videoIndex: 3
-  assignments: []
-  stopOtherPlayers: 1
 --- !u!1 &7212489934682883691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6261,7 +6098,6 @@ GameObject:
   - component: {fileID: 3576531342236675644}
   - component: {fileID: 8503945280721378988}
   - component: {fileID: 8503945280721378989}
-  - component: {fileID: 8503945280721378990}
   m_Layer: 5
   m_Name: Deliver
   m_TagString: Untagged
@@ -6327,28 +6163,6 @@ RectTransform:
   m_AnchoredPosition: {x: -183, y: 123}
   m_SizeDelta: {x: 107.4816, y: 45}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &8355102715119796185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978195767553213802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 1
-  videoIndex: 0
-  assignments:
-  - playerID: 1
-    videoIndex: 0
-  - playerID: 3
-    videoIndex: 1
-  - playerID: 4
-    videoIndex: 2
-  stopOtherPlayers: 1
 --- !u!114 &8355102715119796186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6480,18 +6294,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8503945280721378990}
-        m_TargetAssemblyTypeName: VideoButtonHandler, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8503945280721378989}
         m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
         m_MethodName: EnableStepManager
@@ -6516,14 +6318,14 @@ MonoBehaviour:
           m_StringArgument: Warehouse,LTFM
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8503945280721378989}
-        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
-        m_MethodName: MoveLTFM
-        m_Mode: 3
+      - m_Target: {fileID: 316652737}
+        m_TargetAssemblyTypeName: VoiceOverManager, Assembly-CSharp
+        m_MethodName: PlayVoice
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 11
+          m_ObjectArgument: {fileID: 8300000, guid: e683b15dd59ff9c41a546d1ad8c09634, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6536,6 +6338,30 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8503945280721378989}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: EnableStepManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8503945280721378989}
+        m_TargetAssemblyTypeName: ButtonGroup, Assembly-CSharp
+        m_MethodName: MoveLTFM
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6554,26 +6380,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNamesToEnable: []
   stepManager: DeliverStepManager
---- !u!114 &8503945280721378990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7212489934682883691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9052ce9da679952478b4f64c62861dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerID: 0
-  videoIndex: 0
-  assignments:
-  - playerID: 1
-    videoIndex: 11
-  - playerID: 3
-    videoIndex: 12
-  stopOtherPlayers: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

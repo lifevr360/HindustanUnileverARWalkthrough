@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "HindustanUnileverARWalkthrough.sln"
+    "dotnet.defaultSolution": "HindustanUnileverARWalkthrough.slnx"
 }
